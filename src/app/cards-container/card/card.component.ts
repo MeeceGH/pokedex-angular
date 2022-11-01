@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PokeData } from 'src/app/poke-data';
 
 @Component({
   selector: 'app-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+
+  @Input() pokeData?: PokeData;
 
   colors = {
     normal: 'A8A77A',
@@ -26,7 +29,9 @@ export class CardComponent implements OnInit {
     dark: '705746',
     steel: 'B7B7CE',
     fairy: 'D685AD'
-};
+  };
+
+
 
   constructor() { }
 
