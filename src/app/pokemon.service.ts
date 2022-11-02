@@ -8,10 +8,18 @@ import { PokeData } from './poke-data';
 })
 export class PokemonService {
 
-  pokemonPerPage: number = 48;
-  currentPage: number = 1;
+  private pokemonPerPage: number = 48;
+  private currentPage: number = 1;
 
   constructor(private http: HttpClient) { }
+
+  getCurrentPage() {
+    return this.currentPage;
+  }
+
+  getPokemonPerPage() {
+    return this.pokemonPerPage;
+  }
 
   getPokemons(): Observable<any> {
     const limit: string = String(this.currentPage * this.pokemonPerPage);

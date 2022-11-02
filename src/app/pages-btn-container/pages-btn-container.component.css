@@ -1,0 +1,8 @@
+.page-btn-container ul {
+    margin: none;
+    display: flex;
+}
+
+.page-btn-container ul li {
+    list-style: none;
+}
