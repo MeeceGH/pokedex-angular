@@ -11,7 +11,7 @@ export class CardsContainerComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   pokemonData?: [];
-  pokemonPerPage = 50;
+  pokemonPerPage = 60;
   currentPage = 1;
 
   ngOnInit(): void {

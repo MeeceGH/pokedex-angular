@@ -15,7 +15,7 @@ export class CardComponent implements OnInit {
   pokemon?: PokeData;
   pokemonImg?: String;
 
-  colors = {
+  colors: any = {
     normal: 'A8A77A',
     fire: 'EE8130',
     water: '6390F0',
@@ -43,6 +43,26 @@ export class CardComponent implements OnInit {
       .subscribe(data => {
         this.pokemon = data;
       });
+  }
+
+  getPokemonNumber(): string {
+    return '#' + String(this.pokemon?.number).padStart(3, '0');
+  }
+
+  getPokemonTypeOne() {
+    return this.pokemon?.type[0].type.name;
+  }
+
+  getPokemonTypeTwo() {
+    if (this.pokemon?.type[1]) {
+      return '/ ' + String(this.pokemon?.type[1].type.name);
+    } else return '';
+  }
+
+  getColor() {
+    const type = this.getPokemonTypeOne();
+    const color = this.colors[type];
+    return '#' + color + '75';
   }
 
 }

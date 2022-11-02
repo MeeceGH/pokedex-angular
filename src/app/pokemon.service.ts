@@ -13,7 +13,7 @@ export class PokemonService {
 
   getPokemons(currentPage: number, pokemonPerPage: number): Observable<any> {
     const limit: string = String(currentPage * pokemonPerPage);
-    const offset: string = String(Number(limit) - 50);
+    const offset: string = String(Number(limit) - pokemonPerPage);
 
     return this.http.get<any>(
       'https://pokeapi.co/api/v2/pokemon?limit=' + limit + '&offset=' + offset);
