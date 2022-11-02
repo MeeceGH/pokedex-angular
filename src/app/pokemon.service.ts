@@ -8,12 +8,14 @@ import { PokeData } from './poke-data';
 })
 export class PokemonService {
 
+  pokemonPerPage: number = 48;
+  currentPage: number = 1;
 
   constructor(private http: HttpClient) { }
 
-  getPokemons(currentPage: number, pokemonPerPage: number): Observable<any> {
-    const limit: string = String(currentPage * pokemonPerPage);
-    const offset: string = String(Number(limit) - pokemonPerPage);
+  getPokemons(): Observable<any> {
+    const limit: string = String(this.currentPage * this.pokemonPerPage);
+    const offset: string = String(Number(limit) - this.pokemonPerPage);
 
     return this.http.get<any>(
       'https://pokeapi.co/api/v2/pokemon?limit=' + limit + '&offset=' + offset);
