@@ -1,6 +1,6 @@
 export interface PokeData {
-    imgUrl: String;
+    imgUrl: string;
     number: number;
-    name: String;
+    name: string;
     type: Array<{}>;
 }

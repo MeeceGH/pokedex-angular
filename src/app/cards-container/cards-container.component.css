@@ -1,7 +1,14 @@
 #cards-container {
+    max-width: 1200px;
+    width: 100vw;
+}
+
+#cards-container ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 1200px;
-    width: 100vw;
+}
+
+#cards-container ul li {
+    list-style: none;
 }

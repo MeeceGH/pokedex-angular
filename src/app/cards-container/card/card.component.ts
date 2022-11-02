@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PokeData } from 'src/app/poke-data';
+import { PokemonService } from 'src/app/pokemon.service';
 
 @Component({
   selector: 'app-card',
@@ -8,7 +9,11 @@ import { PokeData } from 'src/app/poke-data';
 })
 export class CardComponent implements OnInit {
 
-  @Input() pokeData?: PokeData;
+  @Input() pokeData?: string;
+  @Input() index: number = 1;
+
+  pokemon?: PokeData;
+  pokemonImg?: String;
 
   colors = {
     normal: 'A8A77A',
@@ -31,11 +36,13 @@ export class CardComponent implements OnInit {
     fairy: 'D685AD'
   };
 
-
-
-  constructor() { }
+  constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    this.pokemonService.getPokemon('https://pokeapi.co/api/v2/pokemon/' + String(this.index + 1))
+      .subscribe(data => {
+        this.pokemon = data;
+      });
   }
 
 }
