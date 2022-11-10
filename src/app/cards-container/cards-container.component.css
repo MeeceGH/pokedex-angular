@@ -14,3 +14,8 @@
 #cards-container ul li {
     list-style: none;
 }
+
+.pages-box {
+    max-width: 400px;
+    margin: 20px auto;
+}

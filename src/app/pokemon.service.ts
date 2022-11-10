@@ -20,5 +20,4 @@ export class PokemonService {
   getPokemon(url: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(url);
   }
-
 }
