@@ -1,7 +1,7 @@
 <div id="cards-container">
     <ul *ngIf="pokemonData">
-        <li *ngFor="let pokemon of pokemonData; let i = index">
-            <app-card [pokeData]="pokemon" [index]="i"></app-card>
+        <li *ngFor="let pokemon of pokemonData">
+            <app-card [pokeData]="pokemon"></app-card>
         </li>
     </ul>
 </div>

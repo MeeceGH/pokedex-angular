@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokemonList } from '../poke-data';
 import { PokemonService } from '../pokemon.service';
 
 @Component({
@@ -10,14 +11,14 @@ export class CardsContainerComponent implements OnInit {
 
   constructor(private pokemonService: PokemonService) { }
 
-  pokemonData?: [];
+  pokemonData?: PokemonList[];
 
   ngOnInit(): void {
     this.getPokemonData();
   }
   
   getPokemonData(): void {
-    this.pokemonService.getPokemons()
-      .subscribe(data => this.pokemonData = data.results);
+    this.pokemonService.getPokemonList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=48')
+      .subscribe(data => this.pokemonData = data);
   }
 }

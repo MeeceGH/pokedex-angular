@@ -1,15 +1,16 @@
-<div class="card" *ngIf="pokeData" [ngStyle]="{'background-color': getColor()}">
+<div class="card" *ngIf="pokeData" [ngStyle]="{'background-color': color}"> 
     <div class="img-container" *ngIf="pokemon">
-        <img [src]="pokemon.imgUrl" [alt]="pokemon.name + ' Image'">
+        <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name + ' Image'">
     </div>
 
     <div class="info" *ngIf="pokemon">
-        <div class="number">{{ getPokemonNumber() }}</div>
+        <div class="number">{{ id }}</div>
         <h4 class="name">{{ pokemon.name | titlecase }}</h4>
         <div class="type">
             <small>
                 Type <br> 
-                {{ getPokemonTypeOne() | titlecase }} {{ getPokemonTypeTwo() | titlecase }}
+                <span>{{ pokemon.types[0].type.name | titlecase }}</span>
+                <span *ngIf="pokemon.types[1]">/ {{ pokemon.types[1].type.name | titlecase }}</span>
             </small>
         </div>
     </div>

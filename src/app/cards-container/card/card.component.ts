@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PokeData } from 'src/app/poke-data';
+import { Pokemon, PokemonList } from 'src/app/poke-data';
 import { PokemonService } from 'src/app/pokemon.service';
 
 @Component({
@@ -9,11 +9,14 @@ import { PokemonService } from 'src/app/pokemon.service';
 })
 export class CardComponent implements OnInit {
 
-  @Input() pokeData?: string;
-  @Input() index: number = 1;
+  @Input() pokeData?: PokemonList;
 
-  pokemon?: PokeData;
-  pokemonImg?: String;
+  pokemon?: Pokemon;
+
+  pokeImg?: string;
+  id?: string;
+  color?: string;
+
 
   colors: any = {
     normal: 'A8A77A',
@@ -39,29 +42,27 @@ export class CardComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokemonService.getPokemon('https://pokeapi.co/api/v2/pokemon/' + String(this.index + 1))
+    this.pokemonService.getPokemon('https://pokeapi.co/api/v2/pokemon/' + this.pokeData?.name)
       .subscribe(data => {
         this.pokemon = data;
+        this.id = '#' + String(this.pokemon?.id).padStart(3, '0');
+        this.color = this.getColor();
       });
   }
 
-  getPokemonNumber(): string {
-    return '#' + String(this.pokemon?.number).padStart(3, '0');
-  }
-
   getPokemonTypeOne() {
-    return this.pokemon?.type[0].type.name;
+    return this.pokemon?.types[0].type.name;
   }
 
   getPokemonTypeTwo() {
-    if (this.pokemon?.type[1]) {
-      return '/ ' + String(this.pokemon?.type[1].type.name);
+    if (this.pokemon?.types[1]) {
+      return '/ ' + String(this.pokemon?.types[1].type.name);
     } else return '';
   }
 
   getColor() {
     const type = this.getPokemonTypeOne();
-    const color = this.colors[type];
+    const color = this.colors[String(type)];
     return '#' + color + '75';
   }
 
