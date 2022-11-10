@@ -6,5 +6,5 @@
     </ul>
 </div>
 <div class="pages-box">
-    <p-paginator [rows]="10" [totalRecords]="100"></p-paginator>
+    <p-paginator [rows]="10" [totalRecords]="100" (onPageChange)="paginate($event)"></p-paginator>
 </div>

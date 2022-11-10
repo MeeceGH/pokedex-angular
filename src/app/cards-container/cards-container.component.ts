@@ -21,4 +21,8 @@ export class CardsContainerComponent implements OnInit {
     this.pokemonService.getPokemonList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=48')
       .subscribe(data => this.pokemonData = data);
   }
+
+  paginate(event: any) {
+    console.log(event);
+  }
 }
