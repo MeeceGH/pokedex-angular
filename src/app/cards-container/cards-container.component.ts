@@ -12,17 +12,24 @@ export class CardsContainerComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   pokemonData?: PokemonList[];
+  currentPage: number = 1;
 
   ngOnInit(): void {
-    this.getPokemonData();
+    this.nextPage();
   }
   
   getPokemonData(): void {
-    this.pokemonService.getPokemonList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=48')
+    this.pokemonService.getPokemonList(`https://pokeapi.co/api/v2/pokemon?offset=${(this.currentPage - 1) * 48}&limit=48`)
       .subscribe(data => this.pokemonData = data);
   }
 
-  paginate(event: any) {
-    console.log(event);
+  paginate(event: { page: number }) {
+    this.currentPage = event.page + 1;
+    this.nextPage();
   }
+
+  nextPage() {
+    this.getPokemonData();
+  }
+  
 }
