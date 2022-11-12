@@ -1,0 +1,30 @@
+#types {
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 5px;
+}
+
+.type-container {
+    background-color: red;
+    min-width: 120px;
+    height: 32px;
+    border-radius: 10px;
+    margin: 12px;
+    border: 1px solid #111;
+    box-shadow: 1px 1px 7px #111;
+}
+
+.type-container a {
+    color: #111;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}

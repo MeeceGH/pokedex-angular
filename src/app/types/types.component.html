@@ -1,0 +1,7 @@
+<div id="types">
+    <ng-container *ngFor="let type of types">
+        <div class="type-container" [ngStyle]="{'background-color': '#' + colors[type] + '75'}">
+            <a [routerLink]="type">{{ type | titlecase }}</a>
+        </div>
+    </ng-container>
+</div>
