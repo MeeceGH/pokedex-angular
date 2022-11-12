@@ -13,14 +13,23 @@ export class CardsContainerComponent implements OnInit {
 
   pokemonData?: PokemonList[];
   currentPage: number = 1;
+  maxPokemon = 648;
 
   ngOnInit(): void {
     this.nextPage();
   }
   
   getPokemonData(): void {
-    this.pokemonService.getPokemonList(`https://pokeapi.co/api/v2/pokemon?offset=${(this.currentPage - 1) * 48}&limit=48`)
-      .subscribe(data => this.pokemonData = data);
+    const offset = (this.currentPage - 1) * 48;
+    this.pokemonService.getPokemonList(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=48`)
+      .subscribe(data => {
+        if (offset + 48 > this.maxPokemon) {
+          const sliceAmount = offset + 48 - this.maxPokemon;
+          this.pokemonData = data.slice(0, sliceAmount);
+        } else {
+          this.pokemonData = data
+        }
+      });
   }
 
   paginate(event: { page: number }) {

@@ -47,3 +47,8 @@
 .card .type span {
     margin: 0 2px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

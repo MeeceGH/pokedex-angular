@@ -1,4 +1,4 @@
-<div class="card" *ngIf="pokeData" [ngStyle]="{'background-color': color}"> 
+<a class="card" *ngIf="pokeData" [ngStyle]="{'background-color': color}"> 
     <div class="img-container" *ngIf="pokemon">
         <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name + ' Image'">
     </div>
@@ -14,4 +14,4 @@
             </small>
         </div>
     </div>
-</div>
+</a>
