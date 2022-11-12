@@ -40,6 +40,8 @@ export class CardsContainerComponent implements OnInit {
 
   nextPage(url: string) {
     this.getPokemonData(url);
+    const mainTitle = document.getElementById('main-title');
+    mainTitle?.scrollIntoView();
   }
   
 }
