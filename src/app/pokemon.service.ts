@@ -8,10 +8,12 @@ import { Pokemon, PokemonList, PokemonListDto } from './poke-data';
 })
 export class PokemonService {
 
+  baseUrl: string = 'https://pokeapi.co/api/v2';
+
   constructor(private http: HttpClient) { }
 
   getPokemonList(url: string): Observable<PokemonList[]> {
-    return this.http.get<PokemonListDto>(url)
+    return this.http.get<PokemonListDto>(this.baseUrl + url)
       .pipe(switchMap(res => {
         return of(res.results);
       }));

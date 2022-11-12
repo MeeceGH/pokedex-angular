@@ -7,12 +7,14 @@ import { PaginatorModule } from 'primeng/paginator';
 import { AppComponent } from './app.component';
 import { CardsContainerComponent } from './cards-container/cards-container.component';
 import { CardComponent } from './cards-container/card/card.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardsContainerComponent,
-    CardComponent
+    CardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
