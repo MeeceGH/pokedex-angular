@@ -26,3 +26,16 @@ export interface PokemonListDto {
         url: string;
     }[];
 }
+
+export interface PokemonListType {
+    pokemon: {
+        name: string;
+        url: string;
+    }
+}
+
+export interface PokemonListTypeDto {
+    id: number;
+    name: string;
+    pokemon: PokemonListType[];
+}

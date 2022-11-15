@@ -6,6 +6,7 @@ import { TypesComponent } from './types/types.component';
 const routes: Routes = [
   { path: 'cards', component: CardsContainerComponent },
   { path: 'types', component: TypesComponent },
+  { path: 'types/:typeId', component: CardsContainerComponent },
   { path: '**', redirectTo: '/cards', pathMatch: 'full' }
 ];
 
